@@ -30,9 +30,16 @@ export default function PlatformPage() {
         <ArchitectureDiagram />
       </Section>
 
+      {/* scroll-mt belongs on the element the anchor targets. These are linked
+          as /platform#console and friends; on the inner card it did nothing, so
+          every one of those links landed the heading behind the sticky bar. */}
       {PRODUCTS.map((p, i) => (
-        <Section key={p.slug} id={p.slug} className={i === 0 ? "" : "!pt-4"}>
-          <div className="scroll-mt-24 rounded-2xl border border-line bg-surface p-7 sm:p-10">
+        <Section
+          key={p.slug}
+          id={p.slug}
+          className={`scroll-mt-24 ${i === 0 ? "" : "!pt-4"}`}
+        >
+          <div className="rounded-2xl border border-line bg-surface p-7 sm:p-10">
             <div className="grid gap-10 lg:grid-cols-[1.05fr_1fr]">
               <div className="flex flex-col gap-4">
                 <Eyebrow>{p.kind}</Eyebrow>
